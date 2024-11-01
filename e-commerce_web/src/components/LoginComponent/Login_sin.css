@@ -65,6 +65,7 @@ button {
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  margin:"10px"
 }
 
 button:active {
@@ -124,13 +125,6 @@ input {
   z-index: 2;
 }
 
-.sign-up-container {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
-}
-
 .overlay-container {
   position: absolute;
   top: 0;
@@ -169,7 +163,8 @@ input {
 }
 
 .overlay-left {
-  transform: translateX(-20%);
+  right: 0;
+  transform: translateX(0);
 }
 
 .overlay-right {

@@ -1,6 +1,9 @@
-import Button from "../CommonComponent/Button/Button"
-import '../CommonComponent/cssLog_sin/Login_sin.css'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Signup from "./Signup";
+import './Login_sin.css'
+
 function Login() {
+    console.log("login is rendering ......");
     return (
         <>
             <meta charSet="UTF-8" />
@@ -15,7 +18,7 @@ function Login() {
                         <input type="text" placeholder="Name" />
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
-                        <a href="#" id="signIn">sign in</a>
+                        <Link to="/signup" id="signIn">sign in</Link>
                         <button>Sign Up</button>
                     </form>
                 </div>
@@ -25,16 +28,16 @@ function Login() {
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                       <p className="signUP">dont have a account <a href="#" id="signUp">sign-up</a></p>
+                        <p className="signUP">don't have an account? <Link to="/signup" id="signUp">sign-up</Link></p>
                         <button>Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">
                     <div className="overlay">
-                        <div className="overlay-panel overlay-left">
+                        {/* <div className="overlay-panel overlay-left">
                             <h1>Hello, Friend!</h1>
                             <p>Enter your personal details and start journey with us</p>
-                        </div>
+                        </div> */}
                         <div className="overlay-panel overlay-right">
                             <h1>Welcome Back!</h1>
                             <p>
@@ -44,8 +47,8 @@ function Login() {
                     </div>
                 </div>
             </div>
-
         </>
-    )
+    );
 }
+
 export default Login;
