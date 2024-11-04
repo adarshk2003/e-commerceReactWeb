@@ -11,17 +11,6 @@ function Login() {
             <link rel="stylesheet" href="./login.css" />
             <title>Login</title>
             <div className="container" id="container">
-                <div className="form-container sign-up-container">
-                    <form action="#">
-                        <h1>Create Account</h1>
-                        <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        <Link to="/signup" id="signIn">sign in</Link>
-                        <button>Sign Up</button>
-                    </form>
-                </div>
                 <div className="form-container sign-in-container">
                     <form action="#">
                         <h1>Log in</h1>
@@ -34,10 +23,6 @@ function Login() {
                 </div>
                 <div className="overlay-container">
                     <div className="overlay">
-                        {/* <div className="overlay-panel overlay-left">
-                            <h1>Hello, Friend!</h1>
-                            <p>Enter your personal details and start journey with us</p>
-                        </div> */}
                         <div className="overlay-panel overlay-right">
                             <h1>Welcome Back!</h1>
                             <p>
@@ -52,3 +37,11 @@ function Login() {
 }
 
 export default Login;
+
+
+// https://www.wix.com/website-template/view/html/2247?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fonline-store%2Ffashion-clothing%2F2&tpClick=view_button&esi=7f584199-12f6-4071-808e-9a2d655ea146
+// https://www.wix.com/website-template/view/html/2512?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fonline-store%2Ffashion-clothing&tpClick=view_button&esi=233d4bb4-ed3d-470a-ace3-a6b192813471
+// https://www.wix.com/website-template/view/html/3212?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fonline-store&tpClick=view_button&esi=1bdf573f-12df-4d91-8b9e-a4f8c27591f7
+// https://websitedemos.net/t-shirts-store-04/?customize=template
+
+

@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Login from "./Login";
 import './Login_sin.css';
 
 function Signup() {
@@ -12,6 +14,7 @@ function Signup() {
                         <input type="text" placeholder="Name" required />
                         <input type="email" placeholder="Email" required />
                         <input type="password" placeholder="Password" required />
+                        <p className="login">already have a account <Link to="/login" id="login">login</Link></p>
                         <button type="submit">Sign Up</button>
                     </form>
                 </div>
