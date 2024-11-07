@@ -6,7 +6,7 @@
 
 body {
   /* background: #110b16; */
-  background-image: url(../../../../public/pexels-eberhardgross-1367192.jpg);
+  background-image: url(/pexels-eberhardgross-1367192.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size:cover;
