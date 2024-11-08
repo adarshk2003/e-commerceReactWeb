@@ -11,11 +11,12 @@ function Login() {
             <link rel="stylesheet" href="./login.css" />
             <title>Login</title>
             <div className="container" id="container">
+                <h1>Clyro</h1>
                 <div className="form-container sign-in-container">
                     <form action="#">
                         <h1>Log in</h1>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <input type="email" placeholder="Email" className="LOGIN123" />
+                        <input type="password" placeholder="Password" className="LOGIN123" />
                         <a href="#">Forgot your password?</a>
                         <p className="signUP">don't have an account? <Link to="/signup" id="signUp">sign-up</Link></p>
                         <button>Sign In</button>

@@ -11,9 +11,13 @@ function Signup() {
                     <form action="#">
                         <h1>Create Account</h1>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" required />
-                        <input type="email" placeholder="Email" required />
-                        <input type="password" placeholder="Password" required />
+                        <input type="text" placeholder="Name" required className="LOGIN123" />
+                        <input type="email" placeholder="Email" required className="LOGIN123" />
+                        <input type="password" placeholder="Password" required className="LOGIN123" />
+                        <div>
+                        <input type="checkbox" name="seller" id="seller" />
+                            <label htmlFor="IsSeller"> signup as seller?</label>
+                        </div>
                         <p className="login">already have a account <Link to="/login" id="login">login</Link></p>
                         <button type="submit">Sign Up</button>
                     </form>
