@@ -5,26 +5,23 @@
 }
 
 body {
-  /* background: #110b16; */
-  background-image: url(/pexels-eberhardgross-1367192.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size:cover;
-  /* background-size: 100%; */
+  background: #DFAF71;
+  /* Mustard Yellow */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
-  margin:auto;
+  margin: 0;
   backdrop-filter: blur(10px);
 }
 
 h1 {
   font-weight: bold;
   margin: 0;
-  color: black;
+  color: #2C2C2C;
+  /* Black for text */
 }
 
 h2 {
@@ -37,9 +34,12 @@ p {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
+  color: #2C2C2C;
+  /* Black for text */
 }
-.signUP{
-    margin: 3px 0 45px;
+
+.signUP {
+  margin: 3px 0 45px;
 }
 
 span {
@@ -48,26 +48,32 @@ span {
 }
 
 a {
-  color: #5c8f84;
+  color: #A5A83E;
+  /* Olive Green */
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
 }
-a:hover{
-    text-decoration: underline;
-    color: black;
+
+a:hover {
+  text-decoration: underline;
+  color: #2C2C2C;
+  /* Black on hover */
 }
+
 button {
   border-radius: 20px;
-  border:none;
-  background-color: #352055;
+  border: none;
+  background-color: #D97C52;
+  /* Terracotta */
   color: #FFFFFF;
+  /* White text on buttons */
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin:"10px"
+  margin: 10px;
 }
 
 button:active {
@@ -81,10 +87,12 @@ button:focus {
 button.ghost {
   background-color: transparent;
   border-color: #FFFFFF;
+  /* White border */
 }
 
 form {
   background-color: #FFFFFF;
+  /* White form background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,14 +111,15 @@ form {
   border-radius: 10px;
   outline: none;
 }
-label{
-   font-size: 14px;
+
+label {
+  font-size: 14px;
 }
- 
+
 .container {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
   width: 768px;
@@ -140,37 +149,41 @@ label{
   z-index: 100;
 }
 
-.overlay {
-  /* background: #2b1c3b; */
-  /* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C); */
-  /* background: linear-gradient(to right, #FF4B2B, #FF416C); */
+/* Apply grayscale effect to background image using ::before pseudo-element */
+.overlay::before {
+  content: '';
+  /* Required for a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../public/wonderful-girl-vintage-lush-.jpg);
+  /* Your image */
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 0 0;
+  background-position: center;
+  /* Ensure the image is centered */
+  filter: grayscale(100%);
+  /* Apply grayscale effect */
+  -webkit-filter: grayscale(100%);
+  /* For Safari compatibility */
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
+  /* Elegant inner shadow */
+  z-index: -1;
+  /* Ensure the image stays behind the text */
+}
+
+.overlay h1 {
   color: #FFFFFF;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  /* backdrop-filter: blur(10px); */
-  /* background-image: linear-gradient(to top, #1f222a, #14203d, #061d4f, #03165f, #16056b); */
-  background: linear-gradient(250deg,#f2e9ee,#c3b4eb,#ffeabb);
-  background-size: 180% 180%;
-  animation: gradient-animation 21s ease infinite;
+  /* White text */
 }
 
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.overlay p {
+  color: #2C2C2C;
+  /* Black for text */
 }
+
 .overlay-panel {
   position: absolute;
   display: flex;
@@ -184,11 +197,7 @@ label{
   width: 50%;
 }
 
-.overlay-left {
-  right: 0;
-  transform: translateX(0);
-}
-
+.overlay-left,
 .overlay-right {
   right: 0;
   transform: translateX(0);
@@ -209,9 +218,8 @@ label{
   width: 40px;
 }
 
-
-button:hover{
-    border-radius: 10px;
+button:hover {
+  border-radius: 10px;
+  background-color: #2C2C2C;
+  /* Hover effect: Darken button background */
 }
-
-
