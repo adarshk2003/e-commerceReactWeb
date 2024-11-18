@@ -23,16 +23,16 @@ function Login() {
                         <button>Sign In</button>
                     </form>
                 </div>
-                <div className="overlay-container">
+                {/* <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-right">
                             <h1>Welcome Back!</h1>
-                            <p>
+                            {/* <p>
                                 To keep connected with us please login with your personal info
-                            </p>
+                            </p> *
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );
