@@ -95,6 +95,9 @@ function Signup() {
 
     return (
         <>
+        <body className="AllBody"> 
+            
+        
             <div className="container" id="container">
                 <div className="form-container sign-up-container">
                     <form onSubmit={handleSubmit}>
@@ -154,15 +157,16 @@ function Signup() {
                     </form>
                 </div>
 
-                {/* <div className="overlay-container">
+                <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left">
                             <h1>Hello, Friend!</h1>
-                            {/* <p>Enter your personal details and start your journey with us</p> 
+                            {/*  <p>Enter your personal details and start your journey with us</p>  */}
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
+            </body>
         </>
     );
 }

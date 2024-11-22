@@ -1,0 +1,146 @@
+/* General Navbar Styles */
+.nav-container {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Navbar */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2C2C2C;
+  color: #ffffff;
+}
+
+.main-nav .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.main-nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+}
+
+.main-nav .nav-links li {
+  display: inline;
+}
+
+.main-nav .nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.main-nav .nav-links a:hover {
+  color: #D97C52; /* Terracotta hover effect */
+}
+
+.nav-btn {
+  background-color: #D97C52;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  background-color: #A5A83E; /* Olive green hover effect */
+}
+
+/* Secondary Navbar */
+.secondary-nav {
+  background-color: #F5F5F5;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-nav .categories {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.secondary-nav .categories li {
+  position: relative;
+}
+
+.secondary-nav .categories a {
+  text-decoration: none;
+  color: #2C2C2C;
+  font-size: 1rem;
+}
+
+.secondary-nav .categories a:hover {
+  color: #D97C52;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border-radius: 5px;
+  z-index: 2000;
+}
+
+.dropdown-menu li {
+  padding: 5px 10px;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #2C2C2C;
+  font-size: 0.9rem;
+}
+
+.dropdown-menu a:hover {
+  color: #D97C52;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* Icons Container */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-icon {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: #D97C52; /* Terracotta hover effect */
+}

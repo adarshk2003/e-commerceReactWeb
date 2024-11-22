@@ -4,9 +4,26 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #DFAF71;
-  /* Mustard Yellow */
+@keyframes signlogAni {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10%);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.AllBody{
+  background-image: url(/wonderful-girl-vintage-lush-.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background covers the viewport */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +32,7 @@ body {
   height: 100vh;
   margin: 0;
   backdrop-filter: blur(10px);
+  animation: signlogAni 1.5s ease-in-out; /* Improved animation duration and easing */
 }
 
 h1 {
@@ -111,6 +129,15 @@ form {
   border-radius: 10px;
   outline: none;
 }
+.ForgotPass{
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+}
 
 label {
   font-size: 14px;
@@ -158,15 +185,15 @@ label {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../../../public/wonderful-girl-vintage-lush-.jpg);
+  background-image: url(/public/wonderful-girl-vintage-lush-.jpg);
   /* Your image */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   /* Ensure the image is centered */
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   /* Apply grayscale effect */
-  -webkit-filter: grayscale(100%);
+  /* -webkit-filter: grayscale(100%); */
   /* For Safari compatibility */
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
   /* Elegant inner shadow */
