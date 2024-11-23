@@ -6,21 +6,21 @@ function Nav() {
     <div className="nav-container">
       {/* Main Navbar */}
       <div className="main-nav">
-        <h1 className="logo">Clyro</h1>
         <ul className="nav-links">
           <li><a href="/home">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
+        <h1 className="logo">Clyro</h1>
         <div className="nav-icons">
           <a href="/favorites" className="nav-icon" title="Favorites">
-            <i className="fas fa-heart"></i> {/* Font Awesome Heart */}
+            <i className="fas fa-heart"></i>
           </a>
           <a href="/cart" className="nav-icon" title="Cart">
-            <i className="fas fa-shopping-cart"></i> {/* Font Awesome Cart */}
+            <i className="fas fa-shopping-cart"></i> 
           </a>
           <a href="/profile" className="nav-icon"  title="profile">
-            <i className="fas fa-user"></i> {/* Font Awesome User */}
+            <i className="fas fa-user"></i> 
           </a>
         </div>
       </div>

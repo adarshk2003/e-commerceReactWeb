@@ -8,7 +8,7 @@ export default function Forget() {
 
     return (<>
      <body className="AllBody"> 
-        <div className="container" id="container">
+        <div className="container343" id="container">
             <h1>Clyro</h1>
             <div className="form-container sign-in-container">
                 <form onSubmit={handleSubmit}>
