@@ -15,7 +15,7 @@ module.exports = {
         user_type: "employee"
       },
       {
-        id: "673ad1d2dd0578b3e378e82a",
+        _id: "673ad1d2dd0578b3e378e82a",
         user_type:"seller"
       }
     ]).then(res => {

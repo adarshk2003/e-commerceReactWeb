@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import "./nav.css";
 
-function Nav() {
+function Nav() { 
   return (
     <div className="nav-container">
       {/* Main Navbar */}
@@ -13,14 +14,16 @@ function Nav() {
         </ul>
         <h1 className="logo">Clyro</h1>
         <div className="nav-icons">
-          <a href="/favorites" className="nav-icon" title="Favorites">
+          {/* Favorites Icon */}
+          <Link
+            to={{ pathname: "/favorites", }} className="nav-icon" title="Favorites" >
             <i className="fas fa-heart"></i>
-          </a>
+          </Link>
           <a href="/cart" className="nav-icon" title="Cart">
-            <i className="fas fa-shopping-cart"></i> 
+            <i className="fas fa-shopping-cart"></i>
           </a>
-          <a href="/profile" className="nav-icon"  title="profile">
-            <i className="fas fa-user"></i> 
+          <a href="/profile" className="nav-icon" title="profile">
+            <i className="fas fa-user"></i>
           </a>
         </div>
       </div>
@@ -54,6 +57,7 @@ function Nav() {
           </li>
           <li><a href="/new-arrivals">New Arrivals</a></li>
           <li><a href="/sale">Sale</a></li>
+          <li><a href="/sale">Clyro MAX</a></li>
         </ul>
       </div>
     </div>

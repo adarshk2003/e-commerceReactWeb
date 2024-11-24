@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const users = require("../db/models/users");
-const control_data = require("./control_data.json"); 
+const users = require("../db/models/user");
+// const control_data = require("./control_data.json"); 
 const { success_function, error_function } = require("./response-handler");
 const dotenv = require("dotenv");
 dotenv.config(); 

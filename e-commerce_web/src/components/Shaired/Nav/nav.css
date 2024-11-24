@@ -139,7 +139,7 @@
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 20px; 
 }
 
 .nav-icon {
@@ -147,8 +147,19 @@
   color: #ffffff;
   font-size: 1.5rem;
   transition: color 0.3s ease;
+  animation: bounce 0.4s ease-in-out;
 }
 
 .nav-icon:hover {
   color: #D97C52; /* Terracotta hover effect */
+  transform: scale(1.1); 
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
 }
