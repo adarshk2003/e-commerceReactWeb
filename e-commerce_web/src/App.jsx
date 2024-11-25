@@ -8,6 +8,7 @@ import Profile from './components/profileComp/User';
 import Login from './components/LoginComponent/Login';
 import Signup from './components/LoginComponent/Signup';
 import Forget from './components/LoginComponent/Forgotpass';
+import SellerHomepage from './components/sellerComponent/SellerHome';
 
 function App() {
   return (
@@ -23,9 +24,10 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/seller-home" element={<SellerHomepage />} />
         
         {/* Default Route */}
-        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );

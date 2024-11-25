@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import "./nav.css";
 
 function Nav() { 
@@ -11,9 +11,16 @@ function Nav() {
           <li><a href="/home">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
+          <li><a href="/signup">signup</a></li>
         </ul>
         <h1 className="logo">Clyro</h1>
         <div className="nav-icons">
+          {/* Search Bar */} 
+          <div className="search-bar"> <input type="text" placeholder="Search..." /> 
+            <button className="buttonNavs" type="submit" >
+              <i className="fas fa-search"></i>
+            </button> 
+          </div>
           {/* Favorites Icon */}
           <Link
             to={{ pathname: "/favorites", }} className="nav-icon" title="Favorites" >

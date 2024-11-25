@@ -1,17 +1,9 @@
+// routes/userRoutes.js
 const express = require('express');
+const userController= require('../controller/userController');
 const router = express.Router();
-const userController = require('../controller/userController');
-// const { accessControl } = require('../utils/access-controll');
 
-// // Middleware to set access control
-// function setAccessControl(access_types) {
-//     return (req, res, next) => {
-//         accessControl(access_types, req, res, next);
-//     };
-// }
-
-// Define routes
 router.post('/users', userController.createUser);
+router.get('/users', userController.getAllUsers);
 
-// Correct export
 module.exports = router;

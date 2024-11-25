@@ -1,29 +1,34 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
-dotenv.config()
-const cors = require('cors');
+const cors=require('cors')
+dotenv.config();
 const mongoConnect = require('./db/connect');
-const userRouters = require('./routes/userRouts');
-// const authRouts = require('./routes/authRout');
-const path = require('path');
+const userRoutes = require('./routes/userRouts');
+const authRoutes = require('./routes/authRoutes');
+app.use(cors({ origin: 'http://localhost:5173' }));
+app.get('/test', (req, res) => {
+    res.status(200).send("Test successful");
+});
 
+//Serving static files
+app.use(express.static( "../client"));
+app.use('/uploads',express.static("./uploads"));
 
-app.use(cors());
-
-// Fix the static path
-app.use(express.static(path.join(__dirname, '../e-commerce_web')));
-app.use('/upload', express.static('./upload'));
-
+//Database connection
 mongoConnect();
 
-// Built-in middleware for parsing JSON and urlencoded data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//Parse JSON Datas
+app.use(express.json({limit : "100mb"}));
 
-// Routes
-app.use(userRouters);
-// app.use(authRouts);
+//Parse form datas
+app.use(express.urlencoded({extended : true}));
+
+//userRoutes
+app.use(userRoutes);
+
+//authRoutes
+app.use(authRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running at http://localhost:${process.env.PORT}`);

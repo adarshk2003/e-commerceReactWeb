@@ -1,23 +1,49 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Signup from "./Signup";
+import axios from "axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Forget from "./Forgotpass";
 import './Login_sin.css';
-import { useEffect } from "react";
 
 function Login() {
-    useEffect(() => {
-        document.title = "Login - Clyro"; // Set page title dynamically
-    }, []);
+    const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-    const handleLogin = (event) => {
-        event.preventDefault();
-        // Add login logic here
-        console.log("Login form submitted");
-    };
+  const navigate = useNavigate();
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+        const response = await axios.post('http://localhost:7000/login', { email, password });
+        console.log(response.data);
+        const { token, _id, user_type} = response.data.data;
+        if(!response.data){
+          alert('login failed')
+        }
+        else{
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('user', JSON.stringify(_id,user_type));
+        console.log(localStorage);
+
+
+        alert("Login Successful");
+        console.log("login successful");
+        
+          navigate('/home');
+          
+        
+       } 
+    } catch (err) {
+        setError(err.response?.data?.error || 'login failed');
+        alert('Login Failed');
+    }
+};
     return (
         <>
-         <body className="AllBody"> 
+         <div className="AllBody"> 
         <div className="container343" id="container343">
             <h1>Clyro</h1>
             <div className="form-container sign-in-container">
@@ -27,14 +53,17 @@ function Login() {
                         type="email" 
                         placeholder="Email" 
                         className="LOGIN123" 
+                        value={email} onChange={(e) => setEmail(e.target.value)}
                         required 
                     />
                     <input 
                         type="password" 
                         placeholder="Password" 
                         className="LOGIN123" 
+                        value={password} onChange={(e) => setPassword(e.target.value)} 
                         required 
                     />
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                     <Link to="/Forget" id="Forgot">Forgot your password?</Link>
                     <p className="signUP">
                         Don't have an account? 
@@ -52,7 +81,7 @@ function Login() {
                 </div>
             </div>
         </div>
-        </body>
+        </div>
         </>
     );
 }

@@ -163,3 +163,36 @@
     transform: scale(1.3);
   }
 }
+/* search bar  */
+
+/* Search Bar */ 
+.search-bar { display: flex; 
+  align-items: center; 
+  border: 1px solid #ccc;
+   border-radius: 4px; 
+   padding: 0.15rem;
+   background-color: #ffffff; 
+   height: 35px; /* Adjust width for a smaller search bar */ 
+  } 
+.search-bar input {
+   border: none;
+    outline: none;
+     padding: 0.25rem;
+     font-family: 'Montserrat', sans-serif;
+      width: 100%; /* Ensure input field takes the full width */
+     } 
+.buttonNav { 
+  border: none; 
+  background: none; 
+  cursor: pointer; 
+  background-color: whitesmoke;
+  border-radius: 0px;
+} 
+.buttonNav:hover{
+  background-color: #2C2C2C;
+  border-radius: 0px;
+}
+.search-bar .butttonNav i
+ {
+   color: #666;
+}
