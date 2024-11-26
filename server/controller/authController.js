@@ -4,6 +4,7 @@ const users = require('../db/models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const user_type = require('../db/models/user_type');
 dotenv.config();
 
 exports.login = async function (req, res) {
@@ -25,17 +26,28 @@ exports.login = async function (req, res) {
             let db_password = user.password;
             console.log("db_password : ", db_password);
 
+
             let passwordMatch = bcrypt.compareSync(password, db_password);
             console.log("passwordMatch : ", passwordMatch);
+            let _id = user._id;
+            console.log(_id);
+            let user_type = user.user_type;
+            console.log(user_type);
+
 
             if(passwordMatch) {
 
-                let token = jwt.sign({user_id : user._id}, process.env.PRIVATE_KEY, {expiresIn : "10d"});
+                let token = jwt.sign({ user_id: user._id }, process.env.PRIVATE_KEY, { expiresIn: "10d" });
+                
                 
                 let response = success_function({
-                    statusCode : 200,
-                    data : token,
-                    message : "Login successful",
+                    statusCode: 200,
+                    data: {
+                        token,
+                        _id,
+                        user_type,
+                    },
+                    message: "Login successful",
                 });
 
                 res.status(response.statusCode).send(response);

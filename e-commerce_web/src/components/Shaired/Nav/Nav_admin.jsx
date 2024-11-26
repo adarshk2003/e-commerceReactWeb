@@ -27,38 +27,6 @@ function AdminNav() {
           </a>
         </div>
       </div>
-
-      {/* Secondary Navbar */}
-      <div className="secondary-nav">
-        <ul className="categories">
-          <li className="dropdown">
-            <a href="#">Manage Users</a>
-            <ul className="dropdown-menu">
-              <li><a href="/users/list">User List</a></li>
-              <li><a href="/users/roles">User Roles</a></li>
-              <li><a href="/users/permissions">Permissions</a></li>
-            </ul>
-          </li>
-          <li className="dropdown">
-            <a href="#">Order Management</a>
-            <ul className="dropdown-menu">
-              <li><a href="/orders/view">View Orders</a></li>
-              <li><a href="/orders/returns">Manage Returns</a></li>
-            </ul>
-          </li>
-          <li className="dropdown">
-            <a href="#">Content Management</a>
-            <ul className="dropdown-menu">
-              <li><a href="/content-management/blog">Blog Posts</a></li>
-              <li><a href="/content-management/pages">Pages</a></li>
-              <li><a href="/content-management/announcements">Announcements</a></li>
-            </ul>
-          </li>
-          <li><a href="/reviews-feedback">Reviews & Feedback</a></li>
-          <li><a href="/analytics">Analytics</a></li>
-          <li><a href="/support">Support</a></li>
-        </ul>
-      </div>
     </div>
   );
 }

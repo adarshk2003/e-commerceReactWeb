@@ -11,8 +11,10 @@ function Nav_seller() {
           <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/products">Products</a></li>
           <li><a href="/settings">Settings</a></li>
+          <li><a href="/settings">add Product</a></li>
+
         </ul>
-        <h1 className="logo">CLYRO seller</h1>
+        <h1 className="logo">Clyro</h1>
         <div className="nav-icons">
           <Link
             to={{ pathname: "/notifications", }} className="nav-icon" title="Notifications" >
@@ -28,28 +30,6 @@ function Nav_seller() {
             <i className="fas fa-sign-out-alt"></i>
           </a>
         </div>
-      </div>
-
-      {/* Secondary Navbar */}
-      <div className="secondary-nav">
-        <ul className="categories">
-          <li className="dropdown">
-            <a href="#">Manage Products</a>
-            <ul className="dropdown-menu">
-              <li><a href="/products/add">Add New Product</a></li>
-            </ul>
-          </li>
-          <li className="dropdown">
-            <a href="#">Customer Engagement</a>
-            <ul className="dropdown-menu">
-              <li><a href="/customers/list">Customer List</a></li>
-              <li><a href="/customers/messages">Messages</a></li>
-            </ul>
-          </li>
-          <li><a href="/promotions">Promotions</a></li>
-          <li><a href="/reports">Reports</a></li>
-          <li><a href="/support">Support</a></li>
-        </ul>
       </div>
     </div>
   );

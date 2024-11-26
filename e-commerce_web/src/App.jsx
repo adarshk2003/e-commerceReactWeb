@@ -9,6 +9,8 @@ import Login from './components/LoginComponent/Login';
 import Signup from './components/LoginComponent/Signup';
 import Forget from './components/LoginComponent/Forgotpass';
 import SellerHomepage from './components/sellerComponent/SellerHome';
+import AdminHome from './AdminComponent/HomepageAdmin';
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/seller-home" element={<SellerHomepage />} />
+        <Route path="/admin-home" element={<AdminHome />} />
+
         
         {/* Default Route */}
         <Route path="/" element={<Navigate to="/login" />} />
