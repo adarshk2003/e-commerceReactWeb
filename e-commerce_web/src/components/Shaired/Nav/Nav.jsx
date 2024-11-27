@@ -2,36 +2,40 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
-function Nav() { 
+function Nav() {
   return (
     <div className="nav-container">
       {/* Main Navbar */}
       <div className="main-nav">
         <ul className="nav-links">
-          <li><a href="/home">Home</a></li>
+          <li><a href="/getallproduct">Shop</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/signup">signup</a></li>
+          <li><a href="/signup">Sign Up</a></li>
         </ul>
         <h1 className="logo">Clyro</h1>
         <div className="nav-icons">
-          {/* Search Bar */} 
-          <div className="search-bar"> <input type="text" placeholder="Search..." /> 
-            <button className="buttonNavs" type="submit" >
+          <div className="search-bar">
+            <input type="text" placeholder="Search..." />
+            <button className="buttonNavs" type="submit">
               <i className="fas fa-search"></i>
-            </button> 
+            </button>
           </div>
-          {/* Favorites Icon */}
-          <Link
-            to={{ pathname: "/favorites", }} className="nav-icon" title="Favorites" >
+          <Link to="/favorites" className="nav-icon" title="Favorites">
             <i className="fas fa-heart"></i>
           </Link>
           <a href="/cart" className="nav-icon" title="Cart">
             <i className="fas fa-shopping-cart"></i>
           </a>
-          <a href="/profile" className="nav-icon" title="profile">
-            <i className="fas fa-user"></i>
-          </a>
+          
+          {/* User Profile with Dropdown */}
+          <div className="profile-dropdown">
+            <img src="/userimage.jpg" alt="User" className="user-logo" />
+            <ul className="dropdown-content">
+              <li><Link to="/profile"><i className="fas fa-user"></i> Profile</Link></li>
+              <li><Link to="/logout"><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
 

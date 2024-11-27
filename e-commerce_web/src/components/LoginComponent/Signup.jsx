@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import './Login_sin.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 export default function Signup() {
     const [name, setName] = useState('');
@@ -66,23 +68,18 @@ export default function Signup() {
                     'Content-Type': 'application/json'
                 }
             });
-
+        
             if (response.status === 201) {
-                if (response.data.isSeller === false) {
-                    alert("User created successfully as customer!");
-                    navigate('/home');
-                } else {
-                    alert("User created successfully!");
-                    navigate('/seller-home')
-                }
-                
+                toast.success(response.data.isSeller ? "Account created as seller successfully!" : "Account created successfully!");
+                navigate(response.data.isSeller ? '/seller-home' : '/home');
             } else {
-                alert(response.data.message || "Something went wrong!");
+                toast.error(response.data.message || "Something went wrong!");
             }
         } catch (error) {
             console.error("Error:", error);
             alert(error.response?.data?.message || "Something went wrong");
         }
+        
     };
 
     return (

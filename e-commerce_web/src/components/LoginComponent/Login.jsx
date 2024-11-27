@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Signup from "./Signup";
 import axios from "axios";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Import toast
 import Forget from "./Forgotpass";
 import './Login_sin.css';
 
@@ -22,33 +22,33 @@ function Login() {
             const { token, _id, user_type } = response.data.data;
 
             if (!response.data) {
-                alert('Login failed');
+                toast.error('Login failed');
             } else {
                 localStorage.setItem('authToken', token);
                 localStorage.setItem('user', JSON.stringify({ _id, user_type }));
                 console.log(localStorage);
 
-                alert("Login Successful");
+                toast.success("Login Successful");
                 console.log("login successful");
 
                 switch (user_type) {
-                    case 'employee':
+                    case '673acf45dd0578b3e378e829':
                         navigate('/home');
                         break;
-                    case 'admin':
+                    case '673acf2bdd0578b3e378e828':
                         navigate('/admin-home');
                         break;
-                    case 'seller':
+                    case '673ad1d2dd0578b3e378e82a':
                         navigate('/seller-home');
                         break;
                     default:
-                        navigate('/home'); // Default to a generic home page if user_type is unknown
+                        navigate('/home'); // home page
                         break;
                 }
             }
         } catch (err) {
             setError(err.response?.data?.error || 'Login failed');
-            alert('Login Failed');
+            toast.error('Login Failed');
         }
     };
 

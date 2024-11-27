@@ -37,11 +37,13 @@
 .home-content h1 {
   font-size: 3rem;
   margin: 0;
+  color: black;
 }
 
 .home-content p {
   font-size: 1.5rem;
   margin: 20px 0;
+  color:black;
 }
 
 .shop-now {
@@ -186,3 +188,5 @@ display: grid;
   background-position: left top, right top;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),0 -4px 6px rgba(0, 0, 0, 0.1),4px 0 6px rgba(0, 0, 0, 0.1), -4px 0 6px rgba(0, 0, 0, 0.1);
 }
+
+

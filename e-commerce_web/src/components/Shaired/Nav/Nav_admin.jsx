@@ -9,7 +9,7 @@ function AdminNav() {
       <div className="main-nav">
         <ul className="nav-links">
           <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/users">Users</a></li>
+          <li><a href="/getalluser">Users</a></li>
           <li><a href="/reports">Reports</a></li>
           <li><a href="/settings">Settings</a></li>
         </ul>

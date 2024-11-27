@@ -55,16 +55,14 @@ function Home() {
     <>
       {/* Navbar */}
       <Nav />
-      {/* Video Background */}
       <div className="relative flex flex-col justify-center items-center text-center text-white h-[calc(100vh-70px)] overflow-hidden home-content z-10">
-        <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover background-video">
-          <source src="/CLYRO intro [578C790].mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <h1 className="text-4xl font-bold z-10">Welcome to Clyro</h1>
+        <img className="absolute inset-0 w-full h-full object-cover background-video"
+          src="/bannerhome.png">
+        </img>
+        {/* <h1 className="text-4xl font-bold z-1 ">Welcome to Clyro</h1>
         <p className="text-xl font-bold my-6 z-10">
           Discover the latest trends in fashion and elevate your style.
-        </p>
+        </p> */}
         <button className="bg-[#D97C52] text-white py-2 px-6 rounded-lg hover:bg-[#A65A3C] transition duration-300 z-10" onClick={scrollToSelection}>
           Shop Now
         </button>

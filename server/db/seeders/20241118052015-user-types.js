@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         _id: "673acf45dd0578b3e378e829",
-        user_type: "employee"
+        user_type: "buyer"
       },
       {
         _id: "673ad1d2dd0578b3e378e82a",
