@@ -181,7 +181,8 @@
   outline: none;
   padding: 0.25rem;
   font-family: 'Montserrat', sans-serif;
-  width: 100%; /* Ensure input field takes the full width */
+  width: 100%; 
+  border-radius: 10px;
 }
 
 .search-bar .buttonNavs {
