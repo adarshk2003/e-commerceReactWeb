@@ -74,9 +74,11 @@ function Home() {
       {/* Navbar */}
       <Nav />
       <div id="carouselExampleAutoplaying" className="carousel slide container" data-bs-ride="carousel" data-bs-interval="2000">
-        <div className="carousel-inner">
+        <div className="carousel-inner"> 
+          <button b>shop now</button>
           <div className="carousel-item active">
             <img src="/bannerhome.png" className="d-block w-100 img-fluid" alt="..." />
+         
           </div>
           <div className="carousel-item">
             <img src="/bannerhome.png" className="d-block w-100 h-10 img-fluid" alt="..." />
