@@ -71,7 +71,7 @@ export default function Signup() {
         
             if (response.status === 201) {
                 toast.success(response.data.isSeller ? "Account created as seller successfully!" : "Account created successfully!");
-                navigate(response.data.isSeller ? '/seller-home' : '/home');
+                navigate('/login');
             } else {
                 toast.error(response.data.message || "Something went wrong!");
             }

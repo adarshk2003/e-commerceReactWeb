@@ -10,64 +10,45 @@ function AddProductForm() {
     description: "",
     category: "",
     price: "",
-    discount: "",
     quantity: "",
-    images: [],
-    specifications: "",
-    brand: "",
-    tags: "",
+    images: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
 
-  const handleImageChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      images: [...prevData.images, ...e.target.files]
-    }));
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast.success("product added ")
+    
+
   };
 
   return (
     <form onSubmit={handleSubmit} className="add-product-form">
+      <h1 m-2>add product</h1>
       <div className="form-group">
         <label><FontAwesomeIcon icon={faTag} /> Product Name:</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <input type="text" name="name" value={formData.name}  required />
       </div>
       <div className="form-group">
         <label><FontAwesomeIcon icon={faEdit} /> Description:</label>
-        <input type="text" value={formData.description} onChange={handleChange} required />
+        <input type="text" value={formData.description}  required />
       </div>
       <div className="form-group">
         <label><FontAwesomeIcon icon={faClipboardList} /> Category:</label>
-        <input type="text" name="category" value={formData.category} onChange={handleChange} required />
+        <input type="text" name="category" value={formData.category}  required />
       </div>
       <div className="form-group">
         <label><FontAwesomeIcon icon={faDollarSign} /> Price:</label>
-        <input type="text" name="price" value={formData.price} onChange={handleChange} required />
-      </div>
-      <div className="form-group">
-        <label><FontAwesomeIcon icon={faPercent} /> Discount:</label>
-        <input type="text" name="discount" value={formData.discount} onChange={handleChange} />
+        <input type="text" name="price" value={formData.price} required />
       </div>
       <div className="form-group">
         <label><FontAwesomeIcon icon={faBoxes} /> Quantity in Stock:</label>
-        <input type="text   " name="quantity" value={formData.quantity} onChange={handleChange} required />
+        <input type="text   " name="quantity" value={formData.quantity}  required />
       </div>
-      <div className="form-group">
+      <div className="form-group  border-0">
         <label><FontAwesomeIcon icon={faImage} /> Images:</label>
-        <input type="file" name="images" multiple onChange={handleImageChange} />
+        <input type="file" name="images" className="border-0" />
       </div>
       <button type="submit" className="submit-button">Add Product</button>
     </form>

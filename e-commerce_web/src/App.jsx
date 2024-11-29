@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './components/HomeComp/Home';
 import Favorites from './components/favComp/Fav';
-import Cart from './components/cartComp/Cart';
+// import Cart from './components/cartComp/Cart';
 import UserProfile from './components/buyerComponent/Profile';
 // import Nav from './components/Shaired/Nav/Nav';
 import Login from './components/LoginComponent/Login';
@@ -29,9 +29,9 @@ function App() {
         {/* Main Routes */}
         <Route path="/home" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/cart" element={<Cart />} />
+        {/* <Route path="/cart" element={<Cart />} /> */}
         <Route path="/profile" element={<UserProfile />} /> 
-        <Route path="/seller-home" element={<SellerHomepage />} />
+        <Route path="/seller-home" element={<SellerHomepage />} />  
         <Route path="/admin-home" element={<AdminHome />} />
         <Route path="/addproduct" element={<AddProductForm />} />
         {/* admin  */}

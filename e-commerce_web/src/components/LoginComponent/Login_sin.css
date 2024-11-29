@@ -20,7 +20,7 @@
 }
 
 .AllBody{
-  /* background-image: url(/wonderful-girl-vintage-lush-.jpg); */
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
@@ -32,7 +32,6 @@
   height: 100vh;
   margin: 0;
   backdrop-filter: blur(10px);
-  /* animation: signlogAni 1.5s ease-in-out;  */
 }
 
 h1 {
@@ -186,19 +185,14 @@ label {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/wonderful-girl-vintage-lush-.jpg);
-  /* Your image */
+  /* background-image: url(/wonderful-girl-vintage-lush-.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* Ensure the image is centered */
-  /* filter: grayscale(100%); */
-  /* Apply grayscale effect */
-  /* -webkit-filter: grayscale(100%); */
-  /* For Safari compatibility */
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.8);
   /* Elegant inner shadow */
   z-index: -1;
+  background-color: black;
   /* Ensure the image stays behind the text */
 }
 
