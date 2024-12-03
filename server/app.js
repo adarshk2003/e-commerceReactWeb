@@ -1,34 +1,30 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
-const cors=require('cors')
+const cors = require('cors');
+const path = require('path');
 dotenv.config();
-const mongoConnect = require('./db/connect');
+const mongoConnect = require('./db/connect'); 
 const userRoutes = require('./routes/userRouts');
 const authRoutes = require('./routes/authRoutes');
-app.use(cors({ origin: 'http://localhost:5173' }));
+const produtRoutes=require('./routes/productRout');
+
+app.use(cors());
 app.get('/test', (req, res) => {
     res.status(200).send("Test successful");
 });
 
-//Serving static files
-app.use(express.static( "../client"));
-app.use('/uploads',express.static("./uploads"));
+app.use(express.static("../e-commerce_web"));
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
-//Database connection
 mongoConnect();
 
-//Parse JSON Datas
-app.use(express.json({limit : "100mb"}));
+app.use(express.json({ limit: "1000mb" }));
+app.use(express.urlencoded({ extended: true }));
 
-//Parse form datas
-app.use(express.urlencoded({extended : true}));
-
-//userRoutes
 app.use(userRoutes);
-
-//authRoutes
 app.use(authRoutes);
+app.use(produtRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running at http://localhost:${process.env.PORT}`);
