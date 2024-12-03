@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './components/HomeComp/Home';
 import Favorites from './components/favComp/Fav';
 // import Cart from './components/cartComp/Cart';
-import UserProfile from './components/buyerComponent/Profile';
+import UserProfile from './components/profileComponent/Profile';
 // import Nav from './components/Shaired/Nav/Nav';
 import Login from './components/LoginComponent/Login';
 import Signup from './components/LoginComponent/Signup';
-import Forget from './components/LoginComponent/Forgotpass';
+// import Forget from './components/LoginComponent/Forgotpass';
 import SellerHomepage from './components/sellerComponent/SellerHome';
 import AdminHome from './components/AdminComponent/HomepageAdmin';
 import Getalluser from './components/AdminComponent/GetAllUsers';
-import Logout from './components/Shaired/Logout';
+import Logout from './components/LoginComponent/Logout';
 import AddProductForm from './components/sellerComponent/Addproduct';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,6 @@ function App() {
         {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forget" element={<Forget />} />
         
         {/* Main Routes */}
         <Route path="/home" element={<Home />} />

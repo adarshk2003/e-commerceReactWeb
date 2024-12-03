@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Import toast
-import Forget from "./Forgotpass";
 import './Login_sin.css';
 
 function Login() {
@@ -56,7 +55,6 @@ function Login() {
         <>
             <div className="AllBody">
                 <div className="container343" id="container343">
-                    <h1>Clyro</h1>
                     <div className="form-container sign-in-container">
                         <form onSubmit={handleLogin}>
                             <h1>Log in</h1>

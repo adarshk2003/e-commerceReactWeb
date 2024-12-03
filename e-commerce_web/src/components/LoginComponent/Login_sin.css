@@ -209,7 +209,7 @@ label {
 .overlay-panel {
   position: absolute;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
   padding: 0 40px;
@@ -221,7 +221,7 @@ label {
 
 .overlay-left,
 .overlay-right {
-  right: 0;
+  /* right: 0; */
   transform: translateX(0);
 }
 

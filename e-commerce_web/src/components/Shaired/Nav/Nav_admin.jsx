@@ -19,12 +19,12 @@ function AdminNav() {
             to={{ pathname: "/notifications", }} className="nav-icon" title="Notifications" >
             <i className="fas fa-bell"></i>
           </Link>
-          <a href="/profile" className="nav-icon" title="Profile">
+          <Link to={{pathname:"/profile" ,}} className="nav-icon" title="profile">
             <i className="fas fa-user"></i>
-          </a>
-          <a href="/logout" className="nav-icon" title="Logout">
-            <i className="fas fa-sign-out-alt"></i>
-          </a>
+          </Link>
+          <Link to={{pathname:"/logout",}} className="nav-icon" title="logout">
+           <i className="fas fa-sign-out-alt"></i>
+          </Link>
         </div>
       </div>
     </div>
