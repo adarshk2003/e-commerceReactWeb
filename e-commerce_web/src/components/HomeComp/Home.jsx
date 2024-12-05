@@ -3,6 +3,7 @@ import axios from "axios";
 import Nav from "../Shaired/Nav/Nav";
 import Rating from 'react-rating-stars-component';
 import LoadingSpinner from "../Shaired/spinners/Loadspinning";
+import Footer from "../Shaired/footer/Footer";
 import "./home.css";
 
 function Home() {
@@ -34,8 +35,9 @@ function Home() {
                 id="carouselExampleAutoplaying"
                 className="carousel slide container"
                 data-bs-ride="carousel"
-                data-bs-interval="2000"
-            >
+                data-bs-interval="5000"
+                data-bs-pause="hover">
+            
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img
@@ -111,6 +113,7 @@ function Home() {
                     </div>
                 )}
             </div>
+            <Footer />
         </>
     );
 }

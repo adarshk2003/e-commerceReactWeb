@@ -1,85 +1,52 @@
-const success_function = require('../utils/response-handler').success_function;
-const error_function = require('../utils/response-handler').error_function;
+const { success_function, error_function } = require('../utils/response-handler');
 const users = require('../db/models/user');
-// const resetPassword = require('../utils/email/resetpass').resetPassword
-// const sendEmail = require("../utils/email-send").sendEmail;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
 const dotenv = require('dotenv');
-const user_type = require('../db/models/user_type');
 dotenv.config();
-
 
 exports.login = async function (req, res) {
     try {
-        let email = req.body.email.trim().toLowerCase(); // Trim and convert to lowercase
-        console.log("email : ", email);
+        const { email, password } = req.body;
 
-        let password = req.body.password;
-        console.log("password : ", password);
-
-        // Validations
-        let user = await users.findOne({ email });
-        console.log("user : ", user);
-
-        if (user) {
-            let db_password = user.password;
-            console.log("db_password : ", db_password);
-
-            let passwordMatch = bcrypt.compareSync(password, user.password);
-            console.log("passwordMatch : ", passwordMatch);            
-
-            let _id = user._id;
-            console.log(_id);
-            let user_type = user.user_type;
-            console.log(user_type);
-
-            if (passwordMatch) {
-                let token = jwt.sign({ user_id: user._id }, process.env.PRIVATE_KEY, { expiresIn: "10d" });
-
-                let response = success_function({
-                    statusCode: 200,
-                    data: {
-                        token,
-                        _id,
-                        user_type,
-                    },
-                    message: "Login successful",
-                });
-
-                res.status(response.statusCode).send(response);
-                return;
-            } else {
-                let response = error_function({
-                    statusCode: 400,
-                    message: "Invalid password",
-                });
-
-                res.status(response.statusCode).send(response);
-                return;
-            }
-        } else {
-            let response = error_function({
-                statusCode: 404,
-                message: "User not found",
-            });
-
-            res.status(response.statusCode).send(response);
-            return;
+        if (!email || !password) {
+            return res.status(400).send(error_function({ statusCode: 400, message: "Email and password are required" }));
         }
+
+        const trimmedEmail = email.trim().toLowerCase();
+
+        const user = await users.findOne({ email: trimmedEmail });
+
+        if (!user) {
+            return res.status(404).send(error_function({ statusCode: 404, message: "User not found" }));
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            return res.status(400).send(error_function({ statusCode: 400, message: "Invalid password" }));
+        }
+
+        const token = jwt.sign({ user_id: user._id }, process.env.PRIVATE_KEY, { expiresIn: "10d" });
+
+        res.status(200).send(success_function({
+            statusCode: 200,
+            data: {
+                token,
+                _id: user._id,
+                user_type: user.user_type,
+            },
+            message: "Login successful"
+        }));
+
     } catch (error) {
-        console.log("error : ", error);
-
-        let response = error_function({
+        console.error("Error: ", error);
+        res.status(400).send(error_function({
             statusCode: 400,
-            message: error.message ? error.message : "Something went wrong",
-        });
-
-        res.status(response.statusCode).send(response);
-        return;
+            message: error.message || "Something went wrong"
+        }));
     }
-}
+};
 
 
 

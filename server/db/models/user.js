@@ -23,5 +23,5 @@ const user = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user_types"
     },
-});
+},{ timestamps: true });
 module.exports = mongoose.model("users", user);

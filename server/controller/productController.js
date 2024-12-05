@@ -1,135 +1,100 @@
 const products = require('../db/models/product');
-const success_function = require('../utils/response-handler').success_function;
-const error_function = require('../utils/response-handler').error_function;
-const fileUpload = require('../utils/fileUpload').fileUpload;
+const { success_function, error_function } = require('../utils/response-handler');
+const { fileUpload } = require('../utils/fileUpload').fileUpload;
 
 exports.addProduct = async function (req, res) {
-
     try {
-        let body = req.body;
-        let title = req.body.title;
-        let category = req.body.category;
-        let price = req.body.price;
-        let stock = req.body.stock;
+        const {
+            title,
+            description,
+            category,
+            price,
+            stock,
+            image: base64Image,
+            ...rest
+        } = req.body;
+
+        if (!title || !price || !category || !stock || !description) {
+            return res.status(400).send(error_function({
+                statusCode: 400,
+                message: "Title, price, category, description  and stock are required"
+            }));
+        }
 
         let image = null;
-
-        console.log("body", body);
-
-        if (image) {
-            let image = req.body.image;
-        }
-
-        if (!title) {
-            let response = error_function({
-                statusCode: 400,
-                message: "title is required"
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
-        else if (!price) {
-            let response = error_function({
-                statusCode: 400,
-                message: "price is required"
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
-        else if (!category) {
-            let response = error_function({
-                statusCode: 400,
-                message: "category is required"
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        } else if (!stock) {
-            let response = error_function({
-                statusCode: 400,
-                message: "stock is required"
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
-
-        if (req.body.image) {
-
+        if (base64Image) {
             try {
-                image = await fileUpload(req.body.image, 'products');
-            }
-            catch (uploadError) {
-                let response = error_function({
+                image = await fileUpload(base64Image, 'products');
+            } catch (uploadError) {
+                return res.status(500).send(error_function({
                     statusCode: 500,
-                    message: "Error uploading image: " + uploadError,
-                });
-                res.status(response.statusCode).send(response);
-                return;
+                    message: "Error uploading image: " + uploadError.message,
+                }));
             }
         }
 
-        body.image = image || null;
-        let newProduct = await products.create(body);
+        const newProduct = await products.create({
+            title,
+            description,
+            category,
+            price,
+            stock,
+            image,
+            ...rest
+        });
 
-        if (newProduct) {
-            let response = success_function({
-                statusCode: 201,
-                message: "Product added successfully",
-                data: newProduct,
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
-        else {
-            let response = error_function({
-                statusCode: 400,
-                message: "Product creation failed",
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
+        return res.status(201).send(success_function({
+            statusCode: 201,
+            message: "Product added successfully",
+            data: newProduct,
+        }));
 
-
-
-    }
-    catch (error) {
-        console.log("error : ", error);
-
-
-        let response = error_function({
+    } catch (error) {
+        console.error("Error:", error);
+        return res.status(400).send(error_function({
             statusCode: 400,
-            message: error.message ? error.message : "Something went wrong",
-        })
-
-        res.status(response.statusCode).send(response);
-        return;
+            message: error.message || "Something went wrong",
+        }));
     }
-
 }
 
 exports.getProduct = async function (req, res) {
     try {
-        let productData = await products.find();
-        console.log(productData);
+        const productData = await products.find();
+        console.log("Product data:", productData);
 
-
-        let response = success_function({
+        return res.status(200).send(success_function({
             statusCode: 200,
             data: productData,
-            message: "products fetched successfully",
-        });
+            message: "Products fetched successfully",
+        }));
 
-        res.status(response.statusCode).send(response);
-        return;
-    }
-    catch (error) {
-        console.log("error : ", error);
-
-        let response = error_function({
+    } catch (error) {
+        console.error("Error:", error);
+        return res.status(400).send(error_function({
             statusCode: 400,
-            message: error.message ? error.message : "Something went wrong",
-        })
-
-        res.status(response.statusCode).send(response);
-        return;
+            message: error.message || "Something went wrong",
+        }));
     }
 }
+
+
+exports.OtherProducts = async (req, res) => {
+  try {
+    const { sellerId } = req.query; 
+    const products = await products.find({ seller: { $ne: sellerId } }).populate('seller');
+    res.status(200).json({ products });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getMyProducts = async (req, res) => {
+  try {
+    const { sellerId } = req.query;
+    const products = await products.find({ seller: sellerId }).populate('seller');
+    res.status(200).json({ products });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

@@ -1,6 +1,7 @@
 const users = require('../db/models/user');
-const success_function = require('../utils/response-handler').success_function;
-const error_function = require('../utils/response-handler').error_function;
+const { success_function, error_function } = require('../utils/response-handler');
+const user_types = require('../db/models/user_type');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
@@ -8,91 +9,95 @@ dotenv.config();
 
 exports.createUser = async function (req, res) {
     try {
-        let body = req.body;
-        console.log("body : ", body);
+        const { name, email, password, isSeller } = req.body;
 
-        let name = req.body.name;
-        console.log("name : ", name);
-
-        let email = req.body.email.trim().toLowerCase(); // Trim and convert to lowercase
-        console.log("email : ", email);
-
-        let password = req.body.password;
-        console.log("password : ", password);
-
-        let isSeller = req.body.isSeller;
-        console.log("seller", isSeller);
-
-        if (isSeller === true) {
-            console.log("seller");
-            body.user_type = '673ad1d2dd0578b3e378e82a';
-        } else {
-            console.log("customer");
-            body.user_type = '673acf45dd0578b3e378e829';
+        if (!name || !email || !password) {
+            return res.status(400).send(error_function({ statusCode: 400, message: "Name, email, and password are required" }));
         }
 
-        // Validations required
-        if (!name) {
-            let response = error_function({
-                statusCode: 400,
-                message: "Name is required",
-            });
-            res.status(response.statusCode).send(response);
-            return;
+        const trimmedEmail = email.trim().toLowerCase();
+
+        const userExists = await users.countDocuments({ email: trimmedEmail });
+
+        if (userExists > 0) {
+            return res.status(400).send(error_function({ statusCode: 400, message: "User already exists" }));
         }
 
-        let salt = bcrypt.genSaltSync(10);
-        console.log("salt : ", salt);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        let hashed_password = bcrypt.hashSync(password, salt);
-        console.log("hashed_password : ", hashed_password);
+        const user_type = isSeller ? '673ad1d2dd0578b3e378e82a' : '673acf45dd0578b3e378e829';
 
-        let count = await users.countDocuments({ email });
-        console.log("count : ", count);
+        const newUser = await users.create({
+            name,
+            email: trimmedEmail,
+            password: hashedPassword,
+            user_type,
+            isSeller
+        });
 
-        if (count > 0) {
-            let response = error_function({
-                statusCode: 400,
-                message: "User already exists",
-            });
-            res.status(response.statusCode).send(response);
-            return;
-        }
-
-        body.email = email; // Ensure the email is stored in lowercase
-        body.password = hashed_password; // Store the hashed password
-        console.log("body : ", body);
-
-        let new_user = await users.create(body);
-
-        if (new_user) {
-            let token = jwt.sign({ user_id: new_user._id }, process.env.PRIVATE_KEY, { expiresIn: "10d" });
-            let response = success_function({
+        if (newUser) {
+            const token = jwt.sign({ user_id: newUser._id }, process.env.PRIVATE_KEY, { expiresIn: "10d" });
+            return res.status(201).send(success_function({
                 statusCode: 201,
                 data: {
                     token,
-                    _id: new_user._id,
-                    user_type: new_user.user_type,
+                    _id: newUser._id,
+                    user_type: newUser.user_type
                 },
-                message: "User created successfully",
-            });
-            res.status(response.statusCode).send(response);
-            return;
+                message: "User created successfully"
+            }));
         } else {
-            let response = error_function({
+            return res.status(400).send(error_function({
                 statusCode: 400,
-                message: "User creation failed",
-            });
-            res.status(response.statusCode).send(response);
-            return;
+                message: "User creation failed"
+            }));
         }
     } catch (error) {
-        console.log("error : ", error);
-        let response = error_function({
+        console.error("Error: ", error);
+        return res.status(400).send(error_function({
             statusCode: 400,
-            message: error.message ? error.message : "Something went wrong",
-        });
-        res.status(response.statusCode).send(response);
-        return;
+            message: error.message || "Something went wrong"
+        }));
+    }
+};
+
+
+exports.getAllUsers = async function (req, res) {
+    try {
+        const { page = 1, limit = 10, sort = 'name', order = 'asc', type, activity, domain } = req.query;
+
+        let query = {};
+        if (type) {
+            query.user_type = type;
+        }
+        if (activity) {
+            query.status = activity;
+        }
+
+        const usersData = await users.find(query)
+            .select('name email user_type createdAt status') // Select specific fields
+            .sort({ [sort]: order === 'asc' ? 1 : -1 }) // Sort by specified field and order
+            .skip((page - 1) * limit) // Pagination: skip the specified number of documents
+            .limit(Number(limit)); // Limit the number of results
+
+        const totalUsers = await users.countDocuments(query); // Get total count for pagination
+
+        return res.status(200).send(success_function({
+            statusCode: 200,
+            data: {
+                users: usersData,
+                totalUsers,
+                totalPages: Math.ceil(totalUsers / limit),
+                currentPage: Number(page),
+            },
+            message: "Users fetched successfully"
+        }));
+    } catch (error) {
+        console.error("Error fetching users: ", error);
+        return res.status(400).send(error_function({
+            statusCode: 400,
+            message: error.message ? error.message : "Something went wrong"
+        }));
     }
 }

@@ -9,7 +9,9 @@ const userRoutes = require('./routes/userRouts');
 const authRoutes = require('./routes/authRoutes');
 const produtRoutes=require('./routes/productRout');
 
-app.use(cors());
+app.use(cors({ 
+    origin: 'http://localhost:5173'
+}));
 app.get('/test', (req, res) => {
     res.status(200).send("Test successful");
 });

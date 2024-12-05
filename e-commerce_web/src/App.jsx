@@ -15,6 +15,8 @@ import Logout from './components/LoginComponent/Logout';
 import AddProductForm from './components/sellerComponent/Addproduct';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import OtherSellersProducts from './components/sellerComponent/OtherSellersProduct';
+import MyProducts from './components/sellerComponent/Sellerproduct';
 
 library.add(fas);
 function App() {
@@ -35,6 +37,8 @@ function App() {
         <Route path="/addproduct" element={<AddProductForm />} />
         {/* admin  */}
         <Route path="/getalluser" element={<Getalluser />} />
+        {/* seller route */}
+        <Route path="/myproducts" element={<MyProducts />} />
         
         {/* Default Route */}
         <Route path="/" element={<Navigate to="/login" />} />

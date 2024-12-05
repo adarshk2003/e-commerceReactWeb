@@ -38,7 +38,7 @@ function AddProductForm() {
         for (const key in formData) {
             data.append(key, formData[key]);
         }
-        console.log('Form Data:', formData); // Log form data to verify
+        console.log('Form Data:', formData);
         try {
             const response = await axios.post('http://localhost:7000/add', data);
             console.log(response);
