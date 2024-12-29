@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify'; // Import toast
+import { toast } from 'react-toastify';
 import './Login_sin.css';
 
 function Login() {
@@ -36,9 +36,6 @@ function Login() {
                         break;
                     case '673acf2bdd0578b3e378e828':
                         navigate('/admin-home');
-                        break;
-                    case '673ad1d2dd0578b3e378e82a':
-                        navigate('/seller-home');
                         break;
                     default:
                         navigate('/home'); // home page
@@ -76,7 +73,7 @@ function Login() {
                             <Link to="/Forget" id="Forgot">Forgot your password?</Link>
                             <p className="signUP">
                                 Don't have an account?
-                                <Link to="/signup" id="signUp"> Sign up</Link>
+                                <Link to="/signup" id="signUp"> Sign up</Link>  
                             </p>
                             <button type="submit">Log In</button>
                         </form>

@@ -8,15 +8,11 @@ import UserProfile from './components/profileComponent/Profile';
 import Login from './components/LoginComponent/Login';
 import Signup from './components/LoginComponent/Signup';
 // import Forget from './components/LoginComponent/Forgotpass';
-import SellerHomepage from './components/sellerComponent/SellerHome';
 import AdminHome from './components/AdminComponent/HomepageAdmin';
 import Getalluser from './components/AdminComponent/GetAllUsers';
 import Logout from './components/LoginComponent/Logout';
-import AddProductForm from './components/sellerComponent/Addproduct';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import OtherSellersProducts from './components/sellerComponent/OtherSellersProduct';
-import MyProducts from './components/sellerComponent/Sellerproduct';
 
 library.add(fas);
 function App() {
@@ -32,13 +28,10 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         {/* <Route path="/cart" element={<Cart />} /> */}
         <Route path="/profile" element={<UserProfile />} /> 
-        <Route path="/seller-home" element={<SellerHomepage />} />  
         <Route path="/admin-home" element={<AdminHome />} />
-        <Route path="/addproduct" element={<AddProductForm />} />
         {/* admin  */}
         <Route path="/getalluser" element={<Getalluser />} />
         {/* seller route */}
-        <Route path="/myproducts" element={<MyProducts />} />
         
         {/* Default Route */}
         <Route path="/" element={<Navigate to="/login" />} />

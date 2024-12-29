@@ -14,10 +14,6 @@ module.exports = {
         _id: "673acf45dd0578b3e378e829",
         user_type: "buyer"
       },
-      {
-        _id: "673ad1d2dd0578b3e378e82a",
-        user_type:"seller"
-      }
     ]).then(res => {
       console.log(`${res.insertedCount} user types inserted.`);
     }).catch(err => {
@@ -32,7 +28,6 @@ module.exports = {
           $in: [
             '673acf2bdd0578b3e378e828',
             '673acf45dd0578b3e378e829',
-            '673ad1d2dd0578b3e378e82a'
           ]
         }
       }

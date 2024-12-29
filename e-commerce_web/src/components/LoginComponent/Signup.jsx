@@ -14,7 +14,7 @@ export default function Signup() {
     const [errors, setErrors] = useState('');
     const navigate = useNavigate();
 
-    const addUser = async (event) => {
+    const addUser = async (event) => {  
         event.preventDefault();
         console.log("REACHED HERE......:)");
 
@@ -115,16 +115,6 @@ export default function Signup() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {errors.password && <div id="pass-err" style={{ color: 'red' }}>{errors.password}</div>}
-
-                        <div>
-                            <input
-                                type="checkbox"
-                                id="seller"
-                                checked={isSeller}
-                                onChange={() => setIsSeller(!isSeller)}
-                            />
-                            <label htmlFor="seller">Sign up as seller?</label>
-                        </div>
 
                         <button type="submit">Sign Up</button>
                         <p>

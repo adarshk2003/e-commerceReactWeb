@@ -25,15 +25,11 @@ exports.createUser = async function (req, res) {
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-
-        const user_type = isSeller ? '673ad1d2dd0578b3e378e82a' : '673acf45dd0578b3e378e829';
-
         const newUser = await users.create({
             name,
             email: trimmedEmail,
             password: hashedPassword,
-            user_type,
-            isSeller
+            user_types,
         });
 
         if (newUser) {
@@ -43,7 +39,7 @@ exports.createUser = async function (req, res) {
                 data: {
                     token,
                     _id: newUser._id,
-                    user_type: newUser.user_type
+                    user_types: newUser.user_type
                 },
                 message: "User created successfully"
             }));
